@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-tasks"></i> My Tasks</h1>
+                <button id="themeToggle" class="theme-toggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <p class="subtitle">Stay organized and productive</p>
+        </header>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stat-item">
+                <span class="stat-label">Total</span>
+                <span class="stat-value" id="totalTasks">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Active</span>
+                <span class="stat-value" id="activeTasks">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Completed</span>
+                <span class="stat-value" id="completedTasks">0</span>
+            </div>
+        </section>
+
+        <!-- Input Section -->
+        <section class="input-section">
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="taskInput" 
+                    class="task-input" 
+                    placeholder="Add a new task..."
+                    autocomplete="off"
+                >
+                <input 
+                    type="date" 
+                    id="dueDateInput" 
+                    class="due-date-input"
+                    title="Set due date"
+                >
+                <select id="prioritySelect" class="priority-select" title="Set priority">
+                    <option value="">Priority</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <button id="addBtn" class="add-btn" title="Add task">
+                    <i class="fas fa-plus"></i> Add
+                </button>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-list"></i> All
+                </button>
+                <button class="filter-btn" data-filter="active">
+                    <i class="fas fa-spinner"></i> Active
+                </button>
+                <button class="filter-btn" data-filter="completed">
+                    <i class="fas fa-check-circle"></i> Completed
+                </button>
+            </div>
+            <div class="action-buttons">
+                <button id="searchBtn" class="action-btn" title="Search tasks">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button id="exportBtn" class="action-btn" title="Export tasks">
+                    <i class="fas fa-download"></i>
+                </button>
+                <button id="importBtn" class="action-btn" title="Import tasks">
+                    <i class="fas fa-upload"></i>
+                </button>
+                <input type="file" id="importFile" accept=".json" hidden>
+            </div>
+        </section>
+
+        <!-- Search Bar (Hidden by default) -->
+        <section class="search-section" id="searchSection" style="display: none;">
+            <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Search tasks..."
+                autocomplete="off"
+            >
+            <button id="clearSearchBtn" class="clear-btn">Clear</button>
+        </section>
+
+        <!-- Tasks List -->
+        <section class="tasks-section">
+            <div id="tasksList" class="tasks-list">
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <p>No tasks yet. Add one to get started!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clear Completed Section -->
+        <section class="footer-actions" id="footerActions" style="display: none;">
+            <button id="clearCompletedBtn" class="clear-completed-btn">
+                <i class="fas fa-trash"></i> Clear Completed
+            </button>
+        </section>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="localStorage.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
